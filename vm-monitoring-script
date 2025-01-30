@@ -1,0 +1,51 @@
+#!/bin/bash
+
+
+#################################
+
+#author: Anil
+#date: 30 jan 2025
+#version: v1
+
+#descriptin:It  will check and monitor all the parameter of Virtual machine Vm or EC2 instance like memory,connectivity etc
+
+
+#################################
+
+log_dir="/home/ubuntu/logs"
+
+mkdir -p "$log_dir"  # Ensure the directory exists
+
+log_file="$log_dir/log_$(date +"%Y-%m-%d_%H-%M-%S").log"
+
+echo "Current time: $(date '+%Y-%m-%d %H:%M:%S')"
+
+echo "System uptime: $(uptime)"
+
+echo "configurations"
+ip addr
+
+echo "free disk space"
+df -h
+
+echo "free memory"
+free -m
+
+echo "CPU's Count"
+nproc
+
+# Check network connectivity by pinging Google's DNS server
+if ping -c 1 8.8.8.8 >/dev/null; then
+    echo "Network connection is up" 
+
+else
+    echo "Network connection is down"
+fi
+
+
+echo "--------------------"
+sleep 5
+
+
+cron job is running
+cron job is running
